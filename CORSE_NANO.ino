@@ -1,14 +1,10 @@
 /*
 CORSE - PC to JAMMA interface board for generic arcade racing cabinets.
-
 Arduino NANO - Mamehooker outputs read + frequency block sketch
-
 This sketch reads outputs signals from Howard Casto's Mamehooker, computes sync frequency 
 and disables video amp when frequencies are higher than CGA
-
 Here is an example of mamehooker .ini code:
 (messages sent to Arduino serial port COM4)
-
 [General] 
 MameStart=cmo 4 baud=9600_parity=N_data=8_stop=1 
 MameStop=cmc 4 
@@ -22,7 +18,6 @@ lamp0=
 lamp1=cmw 4 1., cmw 4 %s%, cmw 4 x
 lamp2=cmw 4 2., cmw 4 %s%, cmw 4 x
 lamp3=cmw 4 3., cmw 4 %s%, cmw 4 x
-
 by Barito, 2021-2023 (last update apr 2023)
 */
 
@@ -59,7 +54,7 @@ serialRoute[OUTPUTS] = {
 const byte hSyncPin = 8;
 const byte LED = 13;
 const byte vAmpDisable = 7;
-const byte VFEpin = A7;
+const byte VFEpin = A0;
 boolean VFEstate;
 boolean VFE; //video force enable flag
 unsigned long VFEdbTime;
@@ -90,8 +85,8 @@ void setup() {
 
 void loop(){
   DigitalOut();
-  VFEset();
   #ifdef SYNC_MONITOR_ACTIVE
+  VFEset();
   if(VFE == 0){
     FreqCheck();
   }
