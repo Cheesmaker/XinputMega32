@@ -95,6 +95,7 @@ void loop(){
     digitalWrite(LED, HIGH);
   }
   #endif
+  delay(5);
 }
 
 void VFEset(){
@@ -136,10 +137,10 @@ void FreqCheck(){
     else {
       enableState = 0;
     }
-    //if (enableState != prevEnState){//take action on state change only
-    //  prevEnState = enableState;
+    if (enableState != prevEnState){//take action on state change only
+      prevEnState = enableState;
       digitalWrite(vAmpDisable, !enableState);
       digitalWrite(LED, enableState);
-    //}
+    }
   }
 }
