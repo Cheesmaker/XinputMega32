@@ -38,7 +38,7 @@ const int samples = 100;
 boolean enableState;
 boolean prevEnState;
 
-struct serialRoute {int pin; int pID;} 
+struct serialRoute {int pin; int pID;}
 serialRoute[OUTPUTS] = {
   //arduino Output pin - serial message ID
   {12, 1},  //DIGITAL OUT 1 is connected to Arduino pin 12. If a message ID "1" (1.) is received, the output state from the emulator will be routed to that pin.
@@ -79,7 +79,7 @@ void setup() {
   #endif
   //fq = 20; //31KHZ, 32 us (VGA)
   //fq = 29; //25KHZ, 40 us (EGA)
-  fq = 55; //15KHZ - default, 66 us (CGA)
+  fq = 45; //15KHZ - default, 66 us (CGA)
   Serial.begin(9600);
 }
 
